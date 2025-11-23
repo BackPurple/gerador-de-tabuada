@@ -1,0 +1,28 @@
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 400px;
+}
+body {
+  background-color: rgb(118, 78, 156);
+
+  font-family: Arial, sans-serif;
+}
+
+div {
+  text-align: center;
+
+  margin-top: 50px;
+}
+p {
+  text-align: center;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>trabalho faculdade</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Gerador de Tabuada</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Bem-vindo ao meu trabalho de faculdade</h2>
+      </section>
+    </main>
+
+    <div>
+      <h3>Tabuada de Multiplicação</h3>
+      <label for="numero">Digite um número:</label>
+      <input type="number" id="numero" />
+      <!-- botão agora tem id e não usa onclick inline -->
+      <button id="btnGerar" type="button">Gerar Tabuada</button>
+
+      <div id="resultado"></div>
+
+      <script>
+        // ...existing code...
+        const inputNumero = document.getElementById("numero")
+        const btnGerar = document.getElementById("btnGerar")
+        const resultadoDiv = document.getElementById("resultado")
+
+        function gerarTabuada() {
+          const raw = (inputNumero.value || "").toString().trim()
+          if (raw === "") {
+            resultadoDiv.innerHTML =
+              "<p style='color:red'>Digite um número.</p>"
+            inputNumero.focus()
+            return
+          }
+
+          const numero = Number(raw)
+          if (!Number.isFinite(numero)) {
+            resultadoDiv.innerHTML = "<p style='color:red'>Valor inválido.</p>"
+            inputNumero.focus()
+            return
+          }
+
+          // usar inteiro (trunca casas decimais); remova Math.trunc se quiser suportar decimais
+          const n = Math.trunc(numero)
+          let html = `<h4>Tabuada de ${n}:</h4><ul>`
+          for (let i = 1; i <= 10; i++) {
+            html += `<li>${n} x ${i} = ${n * i}</li>`
+          }
+          html += "</ul>"
+
+          resultadoDiv.innerHTML = html
+        }
+
+        // listeners (evita uso de onclick inline)
+        if (btnGerar) btnGerar.addEventListener("click", gerarTabuada)
+
+        // permitir gerar com Enter no input
+        inputNumero.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") gerarTabuada()
+        })
+        // ...existing code...
+      </script>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Trabalho de Faculdade. Todos os direitos reservados.</p>
+    </footer>
+
+    <p>Feito por Dev Kaue</p>
+  </body>
+</html>
